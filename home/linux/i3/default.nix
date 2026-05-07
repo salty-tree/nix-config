@@ -51,7 +51,6 @@
 
         "${mod}+shift+b" = "exec btop";
         "${mod}+shift+d" = "exec discord";
-        "${mod}+shift+n" = "exec noisetorch";
         "${mod}+shift+o" = "exec obsidian";
         "${mod}+shift+z" = "exec zen";
         "${mod}+underscore" = "exec set-sink hdmi-stereo";
@@ -90,7 +89,7 @@
         (no-notif "${pkgs.picom}/bin/picom -b")
         (no-notif "${pkgs.flameshot}/bin/flameshot")
         (no-notif "${pkgs.feh}/bin/feh --bg-fill $HOME/.background-image" // { always = true; })
-        (no-notif "${pkgs.noisetorch}/bin/noisetorch -i")
+        # (no-notif "${pkgs.noisetorch}/bin/noisetorch -i")
         (no-notif "${pkgs.openrgb}/bin/openrgb -p default")
         (no-notif "/run/current-system/sw/bin/fcitx5")
       ];

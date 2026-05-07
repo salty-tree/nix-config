@@ -103,8 +103,8 @@
     enable = true;
     vpsIp = "64.23.232.63";
     vpsUser = "ssh_tunnel";
-    vpsPort = 25566;
-    localPort = 25573;
+    vpsPort = 8000;
+    localPort = 8000;
     user = "danielgu";
     identityFile = "/home/danielgu/.ssh/vps_tunnel_key";
   };
@@ -166,7 +166,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  programs.noisetorch.enable = true;
   programs.dconf.enable = true;
   # services.jack = {
   #   jackd.enable = true;
@@ -266,8 +265,11 @@
   programs.hyprland.enable = true;
   # programs.wayland.miracle-wm.enable = true;
   programs.waybar.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager = {
+    sddm.enable = true;
+    sddm.wayland.enable = true;
+    defaultSession = "hyprland";
+  };
 
   services.blueman.enable = true;
 

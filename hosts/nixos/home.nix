@@ -21,21 +21,22 @@
     godot_4
     libreoffice
     blender
-    pinta
     inkscape
     (callPackage ../../home/common/rebuild-script.nix {
       hostname = "nixos";
       system = "x86_64-linux";
     })
-    unityhub
+    balatro-mod-manager
 
     # Linux-specific
     inputs.zen-browser.packages.${stdenv.system}.default
     davinci-resolve
     wootility
-    wineWowPackages.stable
-    winetricks
+    # wineWowPackages.stable
+    # winetricks
   ];
+
+  services.easyeffects.enable = true;
 
   gtk = {
     enable = true;

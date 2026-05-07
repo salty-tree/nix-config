@@ -10,11 +10,15 @@
   services.flameshot = {
     enable = true;
     package = pkgs.flameshot.override { enableWlrSupport = true; };
-    settings.General.useGrimAdapter = true;
+    # settings.General = {
+    #   useGrimAdapter = true;
+    #   disabledGrimWarning = true;
+    # };
   };
 
   home.packages = with pkgs; [
-    kdePackages.dolphin
+    grim
+    # kdePackages.dolphin
     pulseaudio
   ];
 }

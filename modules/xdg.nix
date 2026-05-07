@@ -7,8 +7,19 @@ in
     enable = true;
     wlr.enable = true;
 
-    config.preferred."org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
-    extraPortals = [ tfchooser ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+      tfchooser
+    ];
+
+    config.hyprland = {
+      default = [
+        "hyprland"
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+    };
   };
 
   hm.xdg.configFile."xdg-desktop-portal-termfilechooser/config".text = ''

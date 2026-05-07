@@ -85,7 +85,6 @@
 
         exec-once = [
           "fcitx5"
-          "noisetorch -i"
           "hyprctl setcursor HollowKnight 32"
         ];
 
