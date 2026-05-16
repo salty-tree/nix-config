@@ -189,7 +189,7 @@
       "minecraft"
       "vboxusers"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
   };
 
   home-manager = {
@@ -221,7 +221,6 @@
     wget
     unzip
     xclip
-    nushell
   ];
   environment.variables = {
     MOZ_ENABLE_WAYLAND = 1;
@@ -229,9 +228,9 @@
     WEBKIT_DISABLE_COMPOSITING_MODE = 1;
   };
   environment.shells = [
-    "/run/current-system/sw/bin/nu"
-    "${pkgs.nushell}/bin/nu"
+    "/run/current-system/sw/bin/fish"
   ];
+  programs.fish.enable = true;
 
   programs.alvr = {
     enable = false;

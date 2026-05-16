@@ -1,12 +1,17 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   # nixpkgs.config.allowUnfree = true;
 
   nix = {
     package = lib.mkDefault pkgs.nix;
     gc.automatic = true;
-    gc.frequency = "weekly";
+    gc.dates = "weekly";
   };
   nix.settings = {
-    experimental-features = ["nix-command" "flakes" "pipe-operators"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+      "pipe-operators"
+    ];
   };
 }

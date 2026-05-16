@@ -61,7 +61,7 @@
   users.users.danielgu = {
     description = "Daniel Gu";
     home = /Users/danielgu;
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
   };
 
   home-manager = {

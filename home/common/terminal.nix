@@ -14,7 +14,6 @@ rec {
     };
     settings = {
       disable_ligatures = "cursor";
-      shell = "${pkgs.nushell}/bin/nu -i -l";
       editor = lib.getExe self.packages.${pkgs.stdenv.system}.neovim;
       macos_option_as_alt = "left";
     };
@@ -80,6 +79,11 @@ rec {
         }
       ];
     };
+  };
+
+  programs.fish = {
+    enable = true;
+    shellAliases = home.shellAliases;
   };
 
   # Nushell config

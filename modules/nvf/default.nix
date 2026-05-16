@@ -1,6 +1,7 @@
 { lib, full, ... }:
 {
   imports = [
+    ./cmds.nix
     ./config.nix
     ./keymap.nix
     ./vim_opts.nix
@@ -8,7 +9,7 @@
   ];
 
   vim = {
-    extraLuaFiles = [ ./cmds.lua ];
+    # extraLuaFiles = [ ./cmds.lua ];
 
     # Enable/disable
     autocomplete.nvim-cmp.enable = true;
