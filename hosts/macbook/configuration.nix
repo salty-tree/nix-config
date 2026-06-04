@@ -33,6 +33,7 @@
     "android-platform-tools"
     "caffeine"
     "arduino-ide"
+    "discord"
 
     # MS office
     "microsoft-word"

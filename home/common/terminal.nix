@@ -16,6 +16,7 @@ rec {
       disable_ligatures = "cursor";
       shell = "${pkgs.nushell}/bin/nu -i -l";
       editor = lib.getExe self.packages.${pkgs.stdenv.system}.neovim;
+      macos_option_as_alt = "left";
     };
   };
 
@@ -38,6 +39,7 @@ rec {
     bat.enable = true;
     btop.enable = true;
     carapace.enable = true;
+    codex.enable = true;
     direnv.enable = true;
     eza.enable = true;
     fzf.enable = true;

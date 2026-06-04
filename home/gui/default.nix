@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./vscode.nix
-    ./discord.nix
     ./zed.nix
   ];
 

@@ -8,15 +8,16 @@
 
     copyparty.url = "github:9001/copyparty";
     catppuccin.url = "github:catppuccin/nix";
-    nvf.url = "github:notashelf/nvf";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    out_neovim.url = "path:./outputs/neovim";
 
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
     copyparty.inputs.nixpkgs.follows = "nixpkgs";
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
+    out_neovim.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
     nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +31,7 @@
       home-manager,
       catppuccin,
       copyparty,
-      nvf,
+      out_neovim,
       zen-browser,
       ...
     }@inputs:
@@ -47,19 +48,9 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          neovim =
-            full:
-            nvf.lib.neovimConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = {
-                inherit system full;
-              };
-              modules = [ (import ./modules/nvf) ];
-            };
         in
         {
-          neovim = (neovim true).neovim;
-          neovim-min = (neovim false).neovim;
+          inherit (out_neovim.packages.${system}) neovim neovim-min;
           rebuild = import ./rebuild-script.nix { inherit system pkgs inputs; };
 
           # homeConfigurations.danielgu = home-manager.lib.homeManagerConfiguration {

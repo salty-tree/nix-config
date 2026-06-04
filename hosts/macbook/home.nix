@@ -14,6 +14,8 @@
     slack
     cloudflared
 
+    yt-dlp
+
     # Darwin-specific
     ice-bar
     raycast

@@ -4,6 +4,7 @@
     # ./i3
     ./rofi.nix
     ./wayland
+    ./discord.nix
   ];
 
   services.flameshot = {
