@@ -26,6 +26,9 @@
     })
   ];
 
+  catppuccin.enable = true;
+  catppuccin.autoEnable = true;
+
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 20;
@@ -188,6 +191,7 @@
       "jackaudio"
       "minecraft"
       "vboxusers"
+      "video"
     ];
     shell = pkgs.fish;
   };

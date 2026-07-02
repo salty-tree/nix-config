@@ -63,7 +63,7 @@
       };
 
       dwindle = {
-        pseudotile = true;
+        # pseudotile = true;
         preserve_split = true;
       };
 
@@ -77,6 +77,7 @@
       monitor = [
         "DP-1, 2560x1440@144, 0x0, 1"
         "DP-4, 2560x1440@240, 0x0, 1"
+        "HDMI-A-1, 2560x1440@144, 0x0, 1"
       ];
 
       exec-once = [
@@ -139,6 +140,8 @@
       ];
     };
   };
+
+  catppuccin.hyprland.enable = false;
 
   xdg.configFile = {
     "swappy/config".text = ''

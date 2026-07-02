@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -11,8 +12,11 @@
 
   hardware.amdgpu.opencl.enable = true;
 
-  # services.xserver = {
-  #   enable = true;
-  #   videoDrivers = [ "amdgpu" ];
-  # };
+  environment.systemPackages = with pkgs; [
+    libva
+    libva-utils
+    mesa
+  ];
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
 }

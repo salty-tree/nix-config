@@ -27,6 +27,7 @@
       system = "x86_64-linux";
     })
     balatro-mod-manager
+    unityhub
 
     # Linux-specific
     inputs.zen-browser.packages.${stdenv.system}.default
