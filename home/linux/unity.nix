@@ -18,5 +18,8 @@ let
   };
 in
 {
-  home.packages = [ unityhubFHS ];
+  home.packages = [
+    unityhubFHS
+    pkgs.plasticscm-client-complete
+  ];
 }

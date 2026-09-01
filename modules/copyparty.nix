@@ -21,10 +21,11 @@
       noob.passwordFile = "/home/danielgu/.config/copyparty/.pw_noob";
       maimai.passwordFile = "/home/danielgu/.config/copyparty/.pw_maimai";
       upload.passwordFile = "/home/danielgu/.config/copyparty/.pw_upload";
+      outreach.passwordFile = "/home/danielgu/.config/copyparty/.pw_outreach";
     };
 
-    volumes."/" = {
-      path = "/srv/copyparty";
+    volumes."/storage" = {
+      path = "/srv/copyparty/storage";
 
       access.A = [ "noob" ];
 
@@ -67,6 +68,13 @@
         d2t = true;
         lifetime = 24 * 60 * 60;
       };
+    };
+
+    volumes."/outreach" = {
+      path = "/srv/copyparty/outreach";
+
+      access.rwg = "outreach";
+      access.A = [ "noob" ];
     };
 
     openFilesLimit = 8192;

@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ./mtd-bus.nix
+  ];
+
   programs.waybar = {
     enable = true;
     settings.mainbar = {
@@ -10,7 +14,11 @@
         "hyprland/workspaces"
         "tray"
       ];
-      modules-center = [ "clock" ];
+      modules-center = [
+        "clock"
+        "custom/separator"
+        "custom/mtd_bus"
+      ];
       modules-right = [
         "cpu"
         "temperature#cpu"
@@ -20,7 +28,7 @@
       ];
 
       clock = {
-        format-alt = "{:%a, %d. %b  %H:%M}";
+        format-alt = "{:%a, %d. %b %H:%M}";
       };
 
       cpu = {
@@ -55,11 +63,18 @@
         icon-size = 18;
         spacing = 8;
       };
+
+      "custom/separator" = {
+        "format" = "|";
+        "tooltip" = false;
+      };
     };
 
     style = ''
       * {
         font-family: "JetBrainsMono Nerd Font";
+        font-weight: 600;
+        color: @text;
       }
 
       #waybar>box {
@@ -68,18 +83,23 @@
         background-color: @mantle;
       }
 
-      #clock, #tray, #workspaces, .modules-right {
+      .modules-center, #tray, #workspaces, .modules-right {
         border-radius: 1.5em;
         border: 2px solid @overlay0;
-        background-color: transparent;
-        font-weight: 600;
-        color: @text;
-      }
-      .modules-right {
-        background-color: @base;
       }
 
-      #clock { padding: 0 1em; background-color: @base; }
+      .modules-left {
+        background-color: transparent;
+      }
+
+      .modules-center, .modules-right {
+        background-color: @base;
+        padding: 0 1em;
+      }
+
+      #custom-separator {
+        margin: 0 0.5em;
+      }
 
       #tray { padding: 0 0.5em; }
 

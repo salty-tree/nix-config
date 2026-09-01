@@ -107,7 +107,7 @@
     vpsIp = "64.23.232.63";
     vpsUser = "ssh_tunnel";
     vpsPort = 8000;
-    localPort = 8000;
+    localPort = 8080;
     user = "danielgu";
     identityFile = "/home/danielgu/.ssh/vps_tunnel_key";
   };
@@ -119,6 +119,7 @@
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+      dejavu_fonts
       corefonts
     ];
     fontconfig.defaultFonts = {
@@ -153,6 +154,16 @@
 
   services.cloudflared = {
     enable = true;
+
+    tunnels."90cb0a76-03e8-4997-8ffe-9b7496294918" = {
+      credentialsFile = "/home/danielgu/.cloudflared/90cb0a76-03e8-4997-8ffe-9b7496294918.json";
+
+      ingress = {
+        "file.giantsaltytree.com" = "http://localhost:3923";
+      };
+
+      default = "http_status:404";
+    };
   };
 
   services.ollama.enable = true;

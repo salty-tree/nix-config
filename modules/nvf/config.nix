@@ -50,6 +50,7 @@
     #     },
     #   },
     # '';
+    lsp.servers.rust-analyzer = { }; # TODO: migrate rust-analyzer options
 
     lsp.servers.null-ls.capabilities.positionEncodings = "utf-8";
   };
