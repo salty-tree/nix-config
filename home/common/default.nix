@@ -14,6 +14,7 @@
   ];
 
   catppuccin.enable = true;
+  catppuccin.autoEnable = true;
   catppuccin.flavor = "mocha";
 
   # Basic packages

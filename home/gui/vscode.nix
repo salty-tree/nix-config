@@ -1,13 +1,15 @@
-{pkgs, ...}: {
-  programs.vscode = {
+{ pkgs, ... }: {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium;
     profiles.default = {
-      extensions = with pkgs.vscode-extensions;
+      extensions =
+        with pkgs.vscode-extensions;
         [
           asvetliakov.vscode-neovim
 
           bbenoist.nix
+
+          rocq-prover.vsrocq
 
           james-yu.latex-workshop
           ms-python.python

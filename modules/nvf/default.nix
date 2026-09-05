@@ -40,7 +40,7 @@
     languages = {
       clang.enable = true;
       clang.cHeader = true;
-      ts.enable = full;
+      typescript.enable = full;
       css.enable = full;
       html.enable = full;
       java.enable = full;

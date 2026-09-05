@@ -9,7 +9,7 @@ rec {
   programs.kitty = {
     enable = true;
     font = {
-      name = "JetBrains Mono Nerd Font";
+      name = if pkgs.stdenv.isLinux then "JetBrains Mono Nerd Font" else "JetBrains Mono";
       size = 12;
     };
     settings = {
@@ -70,6 +70,7 @@ rec {
     starship.settings = lib.recursiveUpdate (builtins.fromTOML (
       builtins.readFile ../extras/starship-nerdfont.toml
     )) { continuation_prompt = "┆ "; };
+    yazi.shellWrapperName = "y";
     yazi.keymap = {
       mgr.prepend_keymap = [
         {

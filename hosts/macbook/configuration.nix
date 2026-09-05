@@ -67,6 +67,7 @@
   home-manager = {
     extraSpecialArgs = { inherit self inputs; };
     users.danielgu = import ./home.nix;
+    backupFileExtension = "bak";
   };
 
   environment.systemPackages = with pkgs; [
