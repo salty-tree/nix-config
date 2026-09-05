@@ -13,10 +13,6 @@
     };
   };
 
-  vim.extraPackages = [
-    pkgs.coq
-  ];
-
   mnw.enable = true;
   mnw.providers.python3 = {
     enable = lib.mkForce true;

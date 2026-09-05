@@ -29,6 +29,8 @@
     balatro-mod-manager
     unityhub
 
+    (coq.withPackages (ps: with ps; [ stdlib ]))
+
     # Linux-specific
     inputs.zen-browser.packages.${stdenv.system}.default
     davinci-resolve
