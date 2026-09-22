@@ -29,7 +29,7 @@
     balatro-mod-manager
     unityhub
 
-    (coq.withPackages (ps: with ps; [ stdlib ]))
+    (coq_8_10.withPackages (ps: with ps; [ stdlib ]))
 
     # Linux-specific
     inputs.zen-browser.packages.${stdenv.system}.default
@@ -56,4 +56,8 @@
     platformTheme.name = "kvantum";
     style.name = "kvantum";
   };
+
+  home.file.".ssh/authorized_keys".text = ''
+    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhV+SGtXgLEIS+ZyXUQu4qwBdBEoiDRZ1wDSLYEao+Z rngustj6@gmail.com
+  '';
 }

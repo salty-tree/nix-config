@@ -44,10 +44,10 @@
       flags.dlni = true;
     };
 
-    volumes."/tmp" = {
-      path = "/srv/copyparty/tmp";
+    volumes."/upload" = {
+      path = "/srv/copyparty/upload";
 
-      access.wG = "*";
+      access.wG = "upload";
       access.A = [ "noob" ];
 
       flags = {

@@ -5,7 +5,6 @@
     ./rofi.nix
     ./unity.nix
     ./wayland
-    ./discord.nix
   ];
 
   # services.flameshot = {
@@ -28,4 +27,11 @@
     TriggerKey=Super+V
     Number of entries=50
   '';
+
+  dconf.enable = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark"; # Or "prefer-light"
+    };
+  };
 }

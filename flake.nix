@@ -10,6 +10,7 @@
     catppuccin.url = "github:catppuccin/nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    # rocq-lsp.url = "github:rocq-community/rocq-lsp";
 
     out_neovim.url = "path:./outputs/neovim";
 
@@ -21,6 +22,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
     nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
+    # rocq-lsp.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

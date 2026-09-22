@@ -160,6 +160,7 @@
 
       ingress = {
         "file.giantsaltytree.com" = "http://localhost:3923";
+        "ssh.giantsaltytree.com" = "ssh://localhost:22";
       };
 
       default = "http_status:404";
@@ -287,8 +288,15 @@
 
   services.blueman.enable = true;
 
-  services.openssh.enable = true;
-  services.openssh.settings.X11Forwarding = true;
+  services.openssh = {
+    enable = true;
+
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   # services.hardware.openrgb.enable = true;
 

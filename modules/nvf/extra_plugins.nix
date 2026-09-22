@@ -13,6 +13,8 @@
     };
   };
 
+  # vim.globals.coqtail_coq_prog = "coq-lsp";
+
   mnw.enable = true;
   mnw.providers.python3 = {
     enable = lib.mkForce true;

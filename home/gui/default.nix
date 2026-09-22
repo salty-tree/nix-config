@@ -3,6 +3,7 @@
   imports = [
     ./vscode.nix
     ./zed.nix
+    ./discord.nix
   ];
 
   home.packages = with pkgs; [
