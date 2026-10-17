@@ -31,7 +31,8 @@
   dconf.enable = true;
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark"; # Or "prefer-light"
+      gtk-enable-primary-paste = false;
+      color-scheme = "prefer-dark";
     };
   };
 }

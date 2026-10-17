@@ -6,23 +6,25 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     home-manager.url = "github:nix-community/home-manager";
 
+    artcraft.url = "github:ipeglin/artcraft-nix";
     copyparty.url = "github:9001/copyparty";
     catppuccin.url = "github:catppuccin/nix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    # rocq-lsp.url = "github:rocq-community/rocq-lsp";
+    septabee.url = "github:Ap6661/septabee-flake";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     out_neovim.url = "path:./outputs/neovim";
 
+    artcraft.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
     copyparty.inputs.nixpkgs.follows = "nixpkgs";
     out_neovim.inputs.nixpkgs.follows = "nixpkgs";
+    nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
+    septabee.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
-    nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
-    # rocq-lsp.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

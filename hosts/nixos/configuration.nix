@@ -7,6 +7,8 @@
 }:
 {
   imports = [
+    inputs.septabee.nixosModules.default
+    inputs.artcraft.nixosModules.default
     ./hardware-configuration.nix
     ../../modules/amdgpu.nix
     ../../modules/copyparty.nix
@@ -206,6 +208,9 @@
       "video"
     ];
     shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhV+SGtXgLEIS+ZyXUQu4qwBdBEoiDRZ1wDSLYEao+Z rngustj6@gmail.com"
+    ];
   };
 
   home-manager = {
@@ -248,10 +253,10 @@
   ];
   programs.fish.enable = true;
 
-  programs.alvr = {
-    enable = false;
-    openFirewall = true;
-  };
+  # programs.alvr = {
+  #   enable = false;
+  #   openFirewall = true;
+  # };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -269,7 +274,7 @@
     extraPackages = with pkgs; [ fuse ];
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
-    protontricks.enable = true;
+    # protontricks.enable = true;
   };
 
   virtualisation.virtualbox = {
@@ -284,6 +289,22 @@
     sddm.enable = true;
     sddm.wayland.enable = true;
     defaultSession = "hyprland";
+  };
+
+  programs.septabee = {
+    enable = true;
+    wayland-deps = true;
+    offline = true;
+  };
+
+  programs.artcraft = {
+    enable = true;
+    apps = [
+      "photocraft"
+      "vectorcraft"
+      "pdfcraft"
+    ];
+    linkFonts = false;
   };
 
   services.blueman.enable = true;

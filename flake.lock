@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "artcraft": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791487984,
+        "narHash": "sha256-1izPnU1htqS6CnER1fktkXc6lErn7c+ggTzfuyOomyU=",
+        "owner": "ipeglin",
+        "repo": "artcraft-nix",
+        "rev": "3d751e74a564002a644924cd1fdd95a96d6cde69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipeglin",
+        "repo": "artcraft-nix",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -224,6 +244,7 @@
     },
     "root": {
       "inputs": {
+        "artcraft": "artcraft",
         "catppuccin": "catppuccin",
         "copyparty": "copyparty",
         "home-manager": "home-manager",
@@ -231,7 +252,28 @@
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs",
         "out_neovim": "out_neovim",
+        "septabee": "septabee",
         "zen-browser": "zen-browser"
+      }
+    },
+    "septabee": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789837987,
+        "narHash": "sha256-0HdFSwk238B3DbjcsDJEduV/Cx+BKtAMgou3ayoOecs=",
+        "owner": "Ap6661",
+        "repo": "septabee-flake",
+        "rev": "45644716dd770234a0dfe8d2f525a174aa64e70a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Ap6661",
+        "repo": "septabee-flake",
+        "type": "github"
       }
     },
     "systems": {

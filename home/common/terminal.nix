@@ -42,7 +42,7 @@ rec {
     direnv.enable = true;
     eza.enable = true;
     fzf.enable = true;
-    gitui.enable = !pkgs.stdenv.hostPlatform.isDarwin;
+    gitui.enable = true;
     keychain.enable = true;
     nix-index.enable = true;
     sioyek.enable = true;
@@ -55,6 +55,7 @@ rec {
     # Config
     btop.settings.vim_keys = true;
     direnv.nix-direnv.enable = true;
+    gitui.keyConfig = ../extras/gitui_vim_keyconfig.ron;
     keychain.keys = [ "id_ed25519" ];
     sioyek.bindings = {
       "screen_down" = [
