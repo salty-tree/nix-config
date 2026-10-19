@@ -20,7 +20,7 @@ rec {
   };
 
   home.sessionVariables = {
-    SHELL = "nu";
+    SHELL = "fish";
     EDITOR = "nvim";
     NIXPKGS_ALLOW_UNFREE = 1;
     ZELLIJ_AUTO_EXIT = "true";

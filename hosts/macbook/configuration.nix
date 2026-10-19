@@ -13,16 +13,16 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.overlays = [
     (self: super: {
-      fish = super.fish.overrideAttrs (old: {
-        doCheck = !super.stdenv.hostPlatform.isDarwin;
-      });
-      gitui = super.gitui.overrideAttrs (old: {
-        version = "0.26.3";
-        src = super.fetchurl {
-          inherit (old.src) url;
-          hash = "sha256-VahfSjzpdxK2GFdaqA88FepABNVU6ImWaZENf7T/bks=";
-        };
-      });
+      # fish = super.fish.overrideAttrs (old: {
+      #   doCheck = !super.stdenv.hostPlatform.isDarwin;
+      # });
+      # gitui = super.gitui.overrideAttrs (old: {
+      #   version = "0.26.3";
+      #   src = super.fetchurl {
+      #     inherit (old.src) url;
+      #     hash = "sha256-VahfSjzpdxK2GFdaqA88FepABNVU6ImWaZENf7T/bks=";
+      #   };
+      # });
     })
   ];
 
@@ -73,11 +73,13 @@
   environment.systemPackages = with pkgs; [
     wget
     unzip
-    nushell
+    # nushell
   ];
   environment.shells = [
+    "/etc/profiles/per-user/danielgu/bin/fish"
     "${pkgs.nushell}/bin/nu"
   ];
+  programs.fish.enable = true;
 
   services.openssh.enable = true;
 
