@@ -1,7 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     (lib.modules.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "danielgu" ])
+  ];
+
+  environment.systemPackages = with pkgs; [
+    wget
+    unzip
   ];
 
   time.timeZone = "America/Chicago";

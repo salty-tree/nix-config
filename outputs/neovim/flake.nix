@@ -35,7 +35,7 @@
               extraSpecialArgs = {
                 inherit system full;
               };
-              modules = [ (import ../../modules/nvf) ];
+              modules = [ (import ../../config/nvf) ];
             };
         in
         {

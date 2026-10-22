@@ -10,14 +10,15 @@
     inputs.septabee.nixosModules.default
     inputs.artcraft.nixosModules.default
     ./hardware-configuration.nix
-    ../../modules/amdgpu.nix
-    ../../modules/artcraft.nix
-    ../../modules/copyparty.nix
-    ../../modules/docker.nix
-    ../../modules/xdg.nix
-    ../../modules/kanata
-    ../../modules/minecraft
-    ../../modules/reverse_tunnel.nix
+    ../../config/linux/amdgpu.nix
+    ../../config/linux/artcraft.nix
+    ../../config/linux/copyparty.nix
+    ../../config/linux/docker.nix
+    ../../config/linux/locale.nix
+    ../../config/linux/xdg.nix
+    ../../config/linux/minecraft
+    ../../config/linux/reverse_tunnel.nix
+    ../../config/fonts.nix
     ../common.nix
   ];
 
@@ -60,19 +61,6 @@
   networking.firewall.allowedUDPPorts = [ ];
 
   time.hardwareClockInLocalTime = true;
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   i18n.inputMethod = {
     enable = true;
@@ -117,11 +105,6 @@
 
   fonts = {
     packages = with pkgs; [
-      nerd-fonts.jetbrains-mono
-      inter
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
       dejavu_fonts
       corefonts
     ];
@@ -240,8 +223,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget
-    unzip
     xclip
   ];
   environment.variables = {

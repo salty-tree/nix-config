@@ -6,7 +6,8 @@
 }:
 {
   imports = [
-    # ../../modules/kanata
+    ../../config/darwin/homebrew.nix
+    ../../config/fonts.nix
     ../common.nix
   ];
 
@@ -26,38 +27,6 @@
     })
   ];
 
-  homebrew.enable = true;
-  homebrew.casks = [
-    "blackhole-2ch"
-    "linearmouse"
-    "android-platform-tools"
-    "caffeine"
-    "arduino-ide"
-    "discord"
-
-    # MS office
-    "microsoft-word"
-    "microsoft-powerpoint"
-    "microsoft-excel"
-    "microsoft-onenote"
-    "microsoft-teams"
-    "onedrive"
-
-    # Misc
-    "wechat"
-    "steam"
-    "blender"
-    "obs"
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    inter
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-  ];
-
   users.users.danielgu = {
     description = "Daniel Gu";
     home = /Users/danielgu;
@@ -71,8 +40,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget
-    unzip
     # nushell
   ];
   environment.shells = [

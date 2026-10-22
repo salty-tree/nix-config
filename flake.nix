@@ -90,7 +90,7 @@
         specialArgs = { inherit self inputs; };
         modules = [
           ./hosts/pzn/configuration.nix
-          ./modules/minecraft
+          ./config/linux/minecraft
           home-manager.nixosModules.default
           catppuccin.nixosModules.catppuccin
         ];
