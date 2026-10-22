@@ -11,6 +11,7 @@
     inputs.artcraft.nixosModules.default
     ./hardware-configuration.nix
     ../../modules/amdgpu.nix
+    ../../modules/artcraft.nix
     ../../modules/copyparty.nix
     ../../modules/docker.nix
     ../../modules/xdg.nix
@@ -295,16 +296,6 @@
     enable = true;
     wayland-deps = true;
     offline = true;
-  };
-
-  programs.artcraft = {
-    enable = true;
-    apps = [
-      "photocraft"
-      "vectorcraft"
-      "pdfcraft"
-    ];
-    linkFonts = false;
   };
 
   services.blueman.enable = true;
