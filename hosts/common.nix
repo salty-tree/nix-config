@@ -37,6 +37,9 @@
   nix.optimise.automatic = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "firefox-esr-140-bin-unwrapped-140.17.0esr"
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

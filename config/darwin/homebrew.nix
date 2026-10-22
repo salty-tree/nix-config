@@ -1,5 +1,6 @@
 {
   homebrew.enable = true;
+  homebrew.onActivation.autoUpdate = true;
   homebrew.casks = [
     "blackhole-2ch"
     "linearmouse"

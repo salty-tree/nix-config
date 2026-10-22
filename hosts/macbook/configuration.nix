@@ -13,6 +13,7 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.overlays = [
+    (final: prev: { firefox-esr = throw "debug"; })
     (self: super: {
       # fish = super.fish.overrideAttrs (old: {
       #   doCheck = !super.stdenv.hostPlatform.isDarwin;
