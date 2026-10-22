@@ -38,6 +38,7 @@ rec {
     bat.enable = true;
     btop.enable = true;
     carapace.enable = true;
+    claude-code.enable = true;
     codex.enable = true;
     direnv.enable = true;
     eza.enable = true;

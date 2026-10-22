@@ -30,7 +30,7 @@ in
       setup = ''
         require("vsrocq").setup({
           vsrocq = {
-            proof = { mode = "Continuous" },
+            -- proof = { mode = "Continuous" },
             completion = {
               enable = true,
               algorithm = "StructuredSplitUnification",
@@ -46,6 +46,24 @@ in
     loaded_coqtail = 1;
     coqtail_supported = 0;
   };
+
+  vim.keymaps =
+    let
+      mkCommand = key: action: desc: {
+        key = "<M-${key}>";
+        mode = [
+          "n"
+          "i"
+        ];
+        action = "<cmd>VsRocq ${action}<CR>";
+        desc = "VsRocq: ${desc}";
+      };
+    in
+    [
+      (mkCommand "j" "stepForward" "step forward")
+      (mkCommand "k" "stepBackward" "step backward")
+      (mkCommand "l" "interpretToPoint" "interpret to cursor")
+    ];
 
   mnw.enable = true;
   mnw.providers.python3 = {
