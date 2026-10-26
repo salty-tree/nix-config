@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ../../home/common
@@ -22,7 +22,15 @@
     #jetbrains.idea-ultimate
     karabiner-elements
     whisky
+    (callPackage ../../home/common/rebuild-script.nix {
+      hostname = "dQw4w9WgXcQ";
+      system = "aarch64-darwin";
+    })
   ];
+
+  home.sessionVariables = {
+    NODE_EXTRA_CA_CERTS = "${config.home.homeDirectory}/.config/claude/macos-roots.pem";
+  };
 
   # Init env vars with zsh
   programs.nushell.extraLogin = ''

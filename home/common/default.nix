@@ -31,7 +31,6 @@
     ripgrep
     tokei
     self.packages.${stdenv.system}.neovim
-    # self.packages.${stdenv.system}.rebuild
   ];
 
   # Dotfiles

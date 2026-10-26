@@ -55,7 +55,6 @@
         in
         {
           inherit (out_neovim.packages.${system}) neovim neovim-min;
-          rebuild = import ./rebuild-script.nix { inherit system pkgs inputs; };
 
           # homeConfigurations.danielgu = home-manager.lib.homeManagerConfiguration {
           #   inherit pkgs;
