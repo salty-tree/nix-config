@@ -1,6 +1,7 @@
 {
   writeShellApplication,
   git,
+  nixfmt,
   hostname,
   system,
 }:
@@ -16,7 +17,10 @@ let
 in
 writeShellApplication {
   name = "nix-rebuild";
-  runtimeInputs = [ git ];
+  runtimeInputs = [
+    git
+    nixfmt
+  ];
   text = with args.${system}; ''
     update=0
     for arg in "$@"; do
@@ -27,6 +31,7 @@ writeShellApplication {
     done
 
     cd ~/nix-config
+    startHead=$(git rev-parse HEAD)
 
     echo "Fetching..."
     git fetch
@@ -48,6 +53,16 @@ writeShellApplication {
 
     "''${EDITOR:-vi}" .
 
+    mapfile -t nixFiles < <(git ls-files --cached --others --exclude-standard '*.nix')
+    nixfmt "''${nixFiles[@]}"
+
+    if [[ $(git rev-parse HEAD) == "$startHead" && -z $(git status --porcelain) ]]; then
+      read -p "No changes. Rebuild anyway? [y/N] " -n 1 -r; echo
+      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 0
+      fi
+    fi
+
     git add -A
 
     echo "Rebuilding..."
@@ -60,6 +75,7 @@ writeShellApplication {
     fi
 
     gen=$(${listGens} | grep current | awk '{print $1}')
+    git diff --cached --stat --patch
     read -p "Commit message: " -r msg
     if [[ -n $msg ]]; then
       git commit -m "$msg [gen $gen]"
