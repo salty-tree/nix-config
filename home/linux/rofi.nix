@@ -3,8 +3,8 @@
 
   programs.rofi = {
     enable = true;
-    terminal = "kitty";
     plugins = [ pkgs.rofi-calc ];
+    settings.terminal = "kitty";
     theme = {
       "*".font = "monospace 12";
       window.height = "720px";

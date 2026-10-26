@@ -9,13 +9,26 @@ rec {
   programs.kitty = {
     enable = true;
     font = {
-      name = if pkgs.stdenv.isLinux then "JetBrains Mono Nerd Font" else "JetBrains Mono";
+      name = if pkgs.stdenv.hostPlatform.isLinux then "JetBrains Mono Nerd Font" else "JetBrains Mono";
       size = 12;
     };
     settings = {
       disable_ligatures = "cursor";
       editor = lib.getExe self.packages.${pkgs.stdenv.system}.neovim;
       macos_option_as_alt = "left";
+
+      # Catppuccin's kitty theme (applied via themeFile, see catppuccin.kitty
+      # in home/common/default.nix) intentionally uses the same hex for most
+      # normal/bright ANSI pairs, since it has one accent per hue rather than
+      # separate bright variants. These overrides, written after the theme
+      # include, lighten each bright slot ~25% toward white so they're
+      # visibly distinct while keeping the same hue.
+      color9 = "#f6a8be"; # bright red
+      color10 = "#bceab9"; # bright green
+      color11 = "#fbe9c3"; # bright yellow
+      color12 = "#a7c7fb"; # bright blue
+      color13 = "#f8d1ed"; # bright magenta
+      color14 = "#afe9e0"; # bright cyan
     };
   };
 
@@ -31,6 +44,8 @@ rec {
     glo = "git log --oneline";
     gs = "git status";
   };
+
+  home.file.".claude/themes/catppuccin-mocha.json".source = ../extras/claude-code-catppuccin-mocha.json;
 
   # CLI programs
   home.shell.enableShellIntegration = true;

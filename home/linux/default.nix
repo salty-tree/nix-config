@@ -35,4 +35,9 @@
       color-scheme = "prefer-dark";
     };
   };
+
+  catppuccin.cursors.enable = true;
+  catppuccin.cursors.accent = "lavender";
+  home.pointerCursor.enable = true;
+  home.pointerCursor.hyprcursor.enable = true;
 }

@@ -11,7 +11,7 @@ let
         zlib
         openssl
         libGL
-        xorg.libX11
+        libx11
       ];
 
     runScript = "unityhub";

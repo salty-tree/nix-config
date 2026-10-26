@@ -39,13 +39,13 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
   # OBS virtual cam
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS VCam" exclusive_caps=1
-  '';
+  # boot.extraModulePackages = with config.boot.kernelPackages; [
+  #   v4l2loopback
+  # ];
+  # boot.kernelModules = [ "v4l2loopback" ];
+  # boot.extraModprobeConfig = ''
+  #   options v4l2loopback devices=1 video_nr=1 card_label="OBS VCam" exclusive_caps=1
+  # '';
   security.polkit.enable = true;
 
   networking.hostName = "fwd-nixos";
@@ -174,9 +174,6 @@
   #   alsa.support32Bit = true;
   # };
 
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-
   users.users.danielgu = {
     isNormalUser = true;
     description = "Daniel Gu";
@@ -230,9 +227,6 @@
     # https://github.com/Martichou/rquickshare/issues/158
     WEBKIT_DISABLE_COMPOSITING_MODE = 1;
   };
-  environment.shells = [
-    "/run/current-system/sw/bin/fish"
-  ];
   programs.fish.enable = true;
 
   # programs.alvr = {
@@ -245,10 +239,10 @@
     libGL
     libxkbcommon
     wayland
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libXrandr
+    libx11
+    libxcursor
+    libxi
+    libxrandr
   ];
 
   programs.steam = {
@@ -259,14 +253,13 @@
     # protontricks.enable = true;
   };
 
-  virtualisation.virtualbox = {
-    host.enable = true;
-    host.enableExtensionPack = true;
-  };
+  # virtualisation.virtualbox = {
+  #   host.enable = true;
+  #   host.enableExtensionPack = true;
+  # };
 
   programs.hyprland.enable = true;
   # programs.wayland.miracle-wm.enable = true;
-  programs.waybar.enable = true;
   services.displayManager = {
     sddm.enable = true;
     sddm.wayland.enable = true;
