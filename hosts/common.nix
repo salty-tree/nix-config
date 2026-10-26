@@ -41,6 +41,19 @@
     "firefox-esr-140-bin-unwrapped-140.17.0esr"
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      # https://github.com/NixOS/nixpkgs/pull/576762
+      cloudflared = prev.cloudflared.overrideAttrs (old: {
+        version = "2026.10.3";
+        src = prev.fetchurl {
+          inherit (old.src) url;
+          hash = "sha256-aNKYxSKu9F/oQS4Mz48h/xKmrXaKppy8I+EOrGiKyMg=";
+        };
+      });
+    })
+  ];
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "bak";
