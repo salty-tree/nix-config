@@ -7,6 +7,7 @@
 {
   imports = [
     ../../config/darwin/homebrew.nix
+    ../../config/darwin/tailscale.nix
     ../../config/fonts.nix
     ../common.nix
   ];
@@ -32,6 +33,9 @@
     description = "Daniel Gu";
     home = /Users/danielgu;
     shell = pkgs.fish;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGTwhApMK5w/Kym4Ffid+G0olp1SHN/HUr3Vbs4hfA3r danielgu@fwd-nixos"
+    ];
   };
 
   home-manager = {

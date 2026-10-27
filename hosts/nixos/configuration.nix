@@ -18,6 +18,7 @@
     ../../config/linux/xdg.nix
     ../../config/linux/minecraft
     ../../config/linux/reverse_tunnel.nix
+    ../../config/linux/tailscale.nix
     ../../config/fonts.nix
     ../common.nix
   ];
@@ -190,7 +191,7 @@
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhV+SGtXgLEIS+ZyXUQu4qwBdBEoiDRZ1wDSLYEao+Z rngustj6@gmail.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhV+SGtXgLEIS+ZyXUQu4qwBdBEoiDRZ1wDSLYEao+Z danielgu@dQw4w9WgXcQ"
     ];
   };
 
