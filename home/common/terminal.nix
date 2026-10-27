@@ -33,7 +33,7 @@ rec {
   };
 
   home.sessionVariables = {
-    SHELL = "fish";
+    SHELL = "${pkgs.fish}/bin/fish";
     EDITOR = "nvim";
     NIXPKGS_ALLOW_UNFREE = 1;
     ZELLIJ_AUTO_EXIT = "true";
