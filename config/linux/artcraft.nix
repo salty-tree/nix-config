@@ -8,7 +8,12 @@
 #
 # Fixed here by wrapping the installed launchers with the missing lib on
 # LD_LIBRARY_PATH instead of patching the upstream flake.
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 let
   apps = [
     "photocraft"

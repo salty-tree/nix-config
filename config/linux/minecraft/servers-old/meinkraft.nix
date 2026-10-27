@@ -1,4 +1,9 @@
-{ servers, mods, pkgs, ... }:
+{
+  servers,
+  mods,
+  pkgs,
+  ...
+}:
 {
   enable = true;
   package = servers.fabric-1_21_3;
@@ -15,13 +20,15 @@
   jvmOpts = "-Xms1024M -Xmx16384M";
 
   symlinks = {
-    mods = pkgs.linkFarmFromDrvs "mods-mein"
-      (mods.modrinth-fabric "1.21.3" [
-        "appleskin" "servux" # "distanthorizons"
+    mods = pkgs.linkFarmFromDrvs "mods-mein" (
+      mods.modrinth-fabric "1.21.3" [
+        "appleskin"
+        "servux" # "distanthorizons"
         "lithium"
         "carpet"
         "fabric-api"
-      ]);
+      ]
+    );
   };
 
   whitelist = {

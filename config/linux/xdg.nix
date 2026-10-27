@@ -7,8 +7,8 @@ in
     enable = true;
     wlr.enable = true;
 
+    # xdg-desktop-portal-hyprland is added by programs.hyprland
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
       tfchooser
     ];

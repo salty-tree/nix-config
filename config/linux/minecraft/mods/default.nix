@@ -17,7 +17,7 @@
 with builtins;
 let
   mod-data = fromJSON (readFile ./modrinth-mods.json);
-in {
-  modrinth-fabric = version: slugs:
-    map (slug: pkgs.fetchurl mod-data.${version}.${slug}) slugs;
+in
+{
+  modrinth-fabric = version: slugs: map (slug: pkgs.fetchurl mod-data.${version}.${slug}) slugs;
 }

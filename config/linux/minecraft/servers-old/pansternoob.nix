@@ -1,4 +1,9 @@
-{ servers, mods, pkgs, ... }:
+{
+  servers,
+  mods,
+  pkgs,
+  ...
+}:
 {
   enable = false;
   package = servers.fabric-1_19_4;
@@ -17,12 +22,16 @@
   jvmOpts = "-Xms1024M -Xmx8192M";
 
   symlinks = {
-    mods = pkgs.linkFarmFromDrvs "mods-pansternoob"
-      (mods.modrinth-fabric "1.19.4" [
+    mods = pkgs.linkFarmFromDrvs "mods-pansternoob" (
+      mods.modrinth-fabric "1.19.4" [
         "fabric-api"
-        "carpet" "carpet-extra" "carpet-tis-addition"
-        "servux" "appleskin"
+        "carpet"
+        "carpet-extra"
+        "carpet-tis-addition"
+        "servux"
+        "appleskin"
         "lithium"
-      ]);
+      ]
+    );
   };
 }

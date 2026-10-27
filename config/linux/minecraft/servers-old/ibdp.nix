@@ -1,4 +1,9 @@
-{ servers, mods, pkgs, ... }:
+{
+  servers,
+  mods,
+  pkgs,
+  ...
+}:
 {
   enable = true;
   package = servers.fabric-1_20_4;
@@ -15,12 +20,18 @@
   jvmOpts = "-Xms1024M -Xmx4096M";
 
   symlinks = {
-    mods = pkgs.linkFarmFromDrvs "mods-ibdp"
-      (mods.modrinth-fabric "1.20.4" [
-        "appleskin" "servux"
-        "plasmo-voice" "pv-addon-groups"
-        "c2me-fabric" "ferrite-core" "krypton" "lithium"
+    mods = pkgs.linkFarmFromDrvs "mods-ibdp" (
+      mods.modrinth-fabric "1.20.4" [
+        "appleskin"
+        "servux"
+        "plasmo-voice"
+        "pv-addon-groups"
+        "c2me-fabric"
+        "ferrite-core"
+        "krypton"
+        "lithium"
         "fabric-api"
-      ]);
+      ]
+    );
   };
 }

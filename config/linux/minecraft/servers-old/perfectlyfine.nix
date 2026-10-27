@@ -1,4 +1,9 @@
-{ servers, mods, pkgs, ... }:
+{
+  servers,
+  mods,
+  pkgs,
+  ...
+}:
 {
   enable = true;
   package = servers.fabric-1_21_3;
@@ -14,12 +19,20 @@
   jvmOpts = "-Xms1024M -Xmx16384M";
 
   symlinks = {
-    mods = pkgs.linkFarmFromDrvs "mods-ibdp"
-      (mods.modrinth-fabric "1.21.3" [
-        "appleskin" "servux" "distanthorizons"
-        "c2me-fabric" "ferrite-core" "krypton" "lithium"
-        "carpet" "carpet-extra" "carpet-tis-addition"
+    mods = pkgs.linkFarmFromDrvs "mods-ibdp" (
+      mods.modrinth-fabric "1.21.3" [
+        "appleskin"
+        "servux"
+        "distanthorizons"
+        "c2me-fabric"
+        "ferrite-core"
+        "krypton"
+        "lithium"
+        "carpet"
+        "carpet-extra"
+        "carpet-tis-addition"
         "fabric-api"
-      ]);
+      ]
+    );
   };
 }

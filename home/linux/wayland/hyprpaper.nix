@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  wallpaper = "${
-    pkgs.runCommand "nixos-nord-dark.jpg" { nativeBuildInputs = [ pkgs.imagemagick ]; } ''
+  wallpaper = "${pkgs.runCommand "nixos-nord-dark.jpg" { nativeBuildInputs = [ pkgs.imagemagick ]; }
+    ''
       convert ${../../extras/wallpapers/nixos-nord.jpg} -modulate 70,100,100 "$out"
     ''
   }";

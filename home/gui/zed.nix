@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.zed-editor];
+{ pkgs, ... }: {
+  home.packages = [ pkgs.zed-editor ];
 
   xdg.configFile."zed/settings.json".text = builtins.toJSON {
     # General visual
@@ -41,7 +41,10 @@
     cursor_blink = false;
     unnecessary_code_fade = 0.2;
     indent_guides.active_line_width = 2;
-    wrap_guides = [80 120];
+    wrap_guides = [
+      80
+      120
+    ];
     soft_wrap = "bounded";
     preferred_line_length = 120;
     line_indicator_format = "long";

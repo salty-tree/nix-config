@@ -6,8 +6,6 @@
 let
   stopId = "GRNBUSEY:8";
   stopIdSafe = builtins.replaceStrings [ ":" ] [ "_" ] stopId;
-  version = "v2.2";
-  format = "json";
   minInterval = 65; # seconds
 
   secretsFile = "${config.xdg.configHome}/waybar/secrets.env";
@@ -42,11 +40,11 @@ let
     fi
 
     if $should_fetch; then
-      url="https://developer.mtd.org/api/${version}/${format}/getdeparturesbystop?key=$MTD_API_KEY&stop_id=${stopId}&pt=60&count=1"
+      url="https://api.mtd.dev/stops/${stopId}/departures"
 
-      response=$(${pkgs.curl}/bin/curl -s --max-time 10 "$url" || true)
+      response=$(${pkgs.curl}/bin/curl -s --max-time 10 -H "X-ApiKey: $MTD_API_KEY" "$url" || true)
 
-      if [[ -n "$response" ]] && echo "$response" | ${pkgs.jq}/bin/jq -e '.status.code == 200' >/dev/null 2>&1; then
+      if [[ -n "$response" ]] && echo "$response" | ${pkgs.jq}/bin/jq -e '.error == null and (.result | type == "array")' >/dev/null 2>&1; then
         echo "$response" > "$CACHE_FILE"
       fi
     fi
@@ -58,22 +56,35 @@ let
 
     data=$(cat "$CACHE_FILE")
 
-    count=$(echo "$data" | ${pkgs.jq}/bin/jq '.departures | length')
+    # Pick the first departure that hasn't left yet (the cache may be up to a minute old)
+    idx=-1
+    mins=0
+    i=0
+    while IFS= read -r est; do
+      est_epoch=$(date -d "$est" +%s)
+      if (( est_epoch >= now )); then
+        idx=$i
+        mins=$(( (est_epoch - now) / 60 ))
+        break
+      fi
+      i=$((i + 1))
+    done < <(echo "$data" | ${pkgs.jq}/bin/jq -r '.result[].estimatedDeparture')
 
-    if [[ "$count" -eq 0 ]]; then
+    if (( idx < 0 )); then
       echo '{"text":"—","tooltip":"No upcoming departures"}'
       exit 0
     fi
 
-    route_long_name=$(echo "$data" | ${pkgs.jq}/bin/jq -r '.departures[0].route.route_long_name')
+    departure=$(echo "$data" | ${pkgs.jq}/bin/jq -c ".result[$idx]")
+    route_long_name=$(echo "$departure" | ${pkgs.jq}/bin/jq -r '.route.longName')
     route_name=$(echo "$route_long_name" | grep -oE '\b\w' | tr -d '\n')
-    route_num=$(echo "$data" | ${pkgs.jq}/bin/jq -r '.departures[0].route.route_short_name')
-    mins=$(echo "$data" | ${pkgs.jq}/bin/jq -r '.departures[0].expected_mins')
+    route_num=$(echo "$departure" | ${pkgs.jq}/bin/jq -r '.route.shortName')
+    direction=$(echo "$departure" | ${pkgs.jq}/bin/jq -r '.trip.direction.shortName')
 
     mtime=$(stat -c %Y "$CACHE_FILE" 2>/dev/null || stat -f %m "$CACHE_FILE")
     last_updated=$(date -d "@$mtime" +%H:%M 2>/dev/null || date -r "$mtime" +%H:%M)
 
-    text="''${route_num}W ''${route_name} in ''${mins}min"
+    text="''${route_num}''${direction} ''${route_name} in ''${mins}min"
     tooltip="Last updated ''${last_updated}"
 
     ${pkgs.jq}/bin/jq -c -n --arg text "$text" --arg tooltip "$tooltip" \
@@ -83,7 +94,7 @@ in
 {
   programs.waybar.settings.mainbar."custom/mtd_bus" = {
     exec = "${mtd-waybar}/bin/mtd-waybar";
-    interval = minInterval;
+    interval = 10;
     return-type = "json";
   };
 }

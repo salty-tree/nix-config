@@ -45,7 +45,8 @@ rec {
     gs = "git status";
   };
 
-  home.file.".claude/themes/catppuccin-mocha.json".source = ../extras/claude-code-catppuccin-mocha.json;
+  home.file.".claude/themes/catppuccin-mocha.json".source =
+    ../extras/claude-code-catppuccin-mocha.json;
 
   # CLI programs
   home.shell.enableShellIntegration = true;

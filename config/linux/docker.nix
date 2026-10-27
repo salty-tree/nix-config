@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   virtualisation.docker.enable = true;
-  users.users.danielgu.extraGroups = ["docker"];
+  users.users.danielgu.extraGroups = [ "docker" ];
 }

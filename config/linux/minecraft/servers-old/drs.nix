@@ -1,4 +1,9 @@
-{ servers, mods, pkgs, ... }:
+{
+  servers,
+  mods,
+  pkgs,
+  ...
+}:
 {
   enable = true;
   package = servers.fabric-1_21_1;
@@ -15,11 +20,12 @@
   jvmOpts = "-Xms512M -Xmx2048M";
 
   symlinks = {
-    mods = pkgs.linkFarmFromDrvs "mods-drs"
-      (mods.modrinth-fabric "1.21.1" [
+    mods = pkgs.linkFarmFromDrvs "mods-drs" (
+      mods.modrinth-fabric "1.21.1" [
         "fabric-api"
         "appleskin"
         "lithium"
-      ]);
+      ]
+    );
   };
 }
