@@ -7,6 +7,7 @@
 {
   imports = [
     ./git.nix
+    ./ssh.nix
     ./nixpkgs.nix
     # ./obs.nix
     ./terminal.nix
