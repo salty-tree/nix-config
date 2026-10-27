@@ -22,6 +22,19 @@ writeShellApplication {
     nixfmt
   ];
   text = with args.${system}; ''
+    # Read prompts from the terminal, dropping keystrokes typed while earlier steps ran
+    prompt() {
+      while read -r -t 0.01 -n 1000 _ </dev/tty; do :; done
+      read -r -p "$1" "$2" </dev/tty
+    }
+
+    # confirm <question> <default y|n>
+    confirm() {
+      local reply
+      prompt "$1" reply || true
+      [[ ''${reply:-$2} =~ ^[Yy] ]]
+    }
+
     update=0
     for arg in "$@"; do
       case "$arg" in
@@ -39,8 +52,7 @@ writeShellApplication {
       behind=$(git rev-list --count 'HEAD..@{u}')
       if [[ $behind -gt 0 ]]; then
         git log --oneline 'HEAD..@{u}'
-        read -p "Pull $behind new commit(s)? [Y/n] " -n 1 -r; echo
-        if [[ ! $REPLY =~ ^[Nn]$ ]]; then
+        if confirm "Pull $behind new commit(s)? [Y/n] " y; then
           git pull --ff-only
         fi
       fi
@@ -57,8 +69,7 @@ writeShellApplication {
     nixfmt "''${nixFiles[@]}"
 
     if [[ $(git rev-parse HEAD) == "$startHead" && -z $(git status --porcelain) ]]; then
-      read -p "No changes. Rebuild anyway? [y/N] " -n 1 -r; echo
-      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+      if ! confirm "No changes. Rebuild anyway? [y/N] " n; then
         exit 0
       fi
     fi
@@ -76,15 +87,14 @@ writeShellApplication {
 
     gen=$(${listGens} | grep current | awk '{print $1}')
     git diff --cached --stat --patch
-    read -p "Commit message: " -r msg
+    prompt "Commit message: " msg
     if [[ -n $msg ]]; then
       git commit -m "$msg [gen $gen]"
     else
       git commit -m "gen $gen"
     fi
 
-    read -p "Push? [y/N] " -n 1 -r; echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if confirm "Push? [y/N] " n; then
       git push
     fi
   '';
