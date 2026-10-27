@@ -4,22 +4,23 @@
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    # Keys are OpenSSH directive names, see ssh_config(5)
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
-        serverAliveInterval = 60;
+        AddKeysToAgent = "yes";
+        ServerAliveInterval = 60;
       };
 
       "nixos-cf" = {
-        hostname = "ssh.giantsaltytree.com";
-        user = "danielgu";
-        proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        HostName = "ssh.giantsaltytree.com";
+        User = "danielgu";
+        ProxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
       };
 
       "lambda" = {
-        hostname = "lambda.cs.illinois.edu";
-        user = "danielg";
-        localForwards = [
+        HostName = "lambda.cs.illinois.edu";
+        User = "danielg";
+        LocalForward = [
           {
             bind.port = 27180;
             host.address = "localhost";
@@ -29,13 +30,13 @@
       };
 
       "willserver" = {
-        hostname = "irs.willkurr.com";
-        user = "irsadmin";
+        HostName = "irs.willkurr.com";
+        User = "irsadmin";
       };
 
       "vps" = {
-        hostname = "24.199.75.76";
-        user = "root";
+        HostName = "24.199.75.76";
+        User = "root";
       };
     };
   };

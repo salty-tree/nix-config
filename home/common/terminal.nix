@@ -107,8 +107,8 @@ rec {
   # Nushell config
   programs.nushell = {
     enable = true;
+    loadSessionVariables = true;
     extraConfig = builtins.readFile ../extras/config.nu;
     shellAliases = home.shellAliases;
-    environmentVariables = home.sessionVariables;
   };
 }
