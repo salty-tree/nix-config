@@ -11,10 +11,25 @@
         ServerAliveInterval = 60;
       };
 
-      "nixos-cf" = {
-        HostName = "ssh.giantsaltytree.com";
+      # "nixos-cf" = {
+      #   HostName = "ssh.giantsaltytree.com";
+      #   User = "danielgu";
+      #   ProxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+      # };
+
+      "nos" = {
+        HostName = "fwd-nixos";
         User = "danielgu";
-        ProxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+      };
+
+      "mac" = {
+        HostName = "dqw4w9wgxcq";
+        User = "danielgu";
+      };
+
+      "mistee" = {
+        HostName = "mistee.taile96ead.ts.net";
+        User = "server";
       };
 
       "lambda" = {
