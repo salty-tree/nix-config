@@ -16,6 +16,10 @@
       e2ts = true;
       reflink = true;
 
+      xff-hdr = "cf-connecting-ip";
+      xff-src = "127.0.0.1";
+      rproxy = 1;
+
       # 10 built-in themes + catppuccin mocha (10) / latte (11)
       themes = 12;
       theme = 10;
