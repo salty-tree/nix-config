@@ -30,6 +30,7 @@ html.fz {
 	--ctp-mantle: #181825;
 	--ctp-crust: #11111b;
 	--ctp-on-accent: var(--ctp-crust);
+	--ctp-panel: var(--ctp-mantle);
 
 	--bg-u6: var(--ctp-surface2);
 	--bg-u5: var(--ctp-surface1);
@@ -70,6 +71,7 @@ html.fy {
 	--ctp-mantle: #e6e9ef;
 	--ctp-crust: #dce0e8;
 	--ctp-on-accent: var(--ctp-base);
+	--ctp-panel: var(--ctp-crust);
 
 	--bg-u6: var(--ctp-surface0);
 	--bg-u5: var(--ctp-surface1);
@@ -183,7 +185,7 @@ html.f {
 	--btn-bs: 0 .05em 0 var(--bg-d3) inset;
 	--btn-1-bs: 0 .05em 0 var(--btn-1h-bg) inset;
 
-	--tree-bg: var(--bg);
+	--tree-bg: var(--ctp-panel);
 
 	--g-bg: var(--bg);
 	--g-b1: var(--bg);
@@ -247,10 +249,18 @@ html.f #ops {
 	z-index: 2;
 }
 html.f #ops a {
-	background: var(--bg);
+	background: var(--ctp-panel);
+}
+html.f #ops a.act {
+	background: var(--op-aa-bg);
 }
 html.f .opview {
 	margin: 1em 0;
+	background: var(--ctp-panel);
+}
+html.f .opview:not(.opbox) {
+	padding: .5em 1em;
+	border-radius: .3em;
 }
 html.f #srch_q {
 	margin: .2em 0 0 1.6em;
@@ -262,6 +272,7 @@ html.f #op_up2k {
 	margin-top: 3em;
 }
 html.f #tree {
+	background: var(--tree-bg);
 	box-shadow: 0 -1px 0 var(--bg-d3);
 }
 html.f #treeh,
