@@ -15,6 +15,11 @@
       e2dsa = true;
       e2ts = true;
       reflink = true;
+
+      # 10 built-in themes + catppuccin mocha (10) / latte (11)
+      themes = 12;
+      theme = 10;
+      html-head = "@${./copyparty/catppuccin.html}";
     };
 
     accounts = {
