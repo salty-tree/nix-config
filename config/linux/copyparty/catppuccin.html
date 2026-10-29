@@ -1,355 +1,357 @@
 <style>
-/*
- * catppuccin theme for copyparty, loaded through --html-head
- *   theme 10 = html.fz (mocha), theme 11 = html.fy (latte)
- * the html.f layout rules are copied from the built-in flat theme (html.b)
- */
-
-html.fz {
-	--ctp-rosewater: #f5e0dc;
-	--ctp-pink: #f5c2e7;
-	--ctp-mauve: #cba6f7;
-	--ctp-red: #f38ba8;
-	--ctp-maroon: #eba0ac;
-	--ctp-peach: #fab387;
-	--ctp-yellow: #f9e2af;
-	--ctp-green: #a6e3a1;
-	--ctp-teal: #94e2d5;
-	--ctp-sapphire: #74c7ec;
-	--ctp-blue: #89b4fa;
-	--ctp-lavender: #b4befe;
-	--ctp-text: #cdd6f4;
-	--ctp-subtext0: #a6adc8;
-	--ctp-overlay2: #9399b2;
-	--ctp-overlay1: #7f849c;
-	--ctp-overlay0: #6c7086;
-	--ctp-surface2: #585b70;
-	--ctp-surface1: #45475a;
-	--ctp-surface0: #313244;
-	--ctp-base: #1e1e2e;
-	--ctp-mantle: #181825;
-	--ctp-crust: #11111b;
-	--ctp-on-accent: var(--ctp-crust);
-	--ctp-panel: var(--ctp-mantle);
-
-	--bg-u6: var(--ctp-surface2);
-	--bg-u5: var(--ctp-surface1);
-	--bg-u4: var(--ctp-surface0);
-	--bg-u3: var(--ctp-surface0);
-	--bg-u2: color-mix(in srgb, var(--ctp-surface0) 50%, var(--ctp-base));
-	--bg-u1: color-mix(in srgb, var(--ctp-surface0) 50%, var(--ctp-base));
-	--bg: var(--ctp-base);
-	--bg-d1: var(--ctp-mantle);
-	--bg-d2: var(--ctp-mantle);
-	--bg-d3: var(--ctp-crust);
-	--bg-max: var(--ctp-crust);
-	--row-alt: var(--ctp-mantle);
-}
-
-html.fy {
-	--ctp-rosewater: #dc8a78;
-	--ctp-pink: #ea76cb;
-	--ctp-mauve: #8839ef;
-	--ctp-red: #d20f39;
-	--ctp-maroon: #e64553;
-	--ctp-peach: #fe640b;
-	--ctp-yellow: #df8e1d;
-	--ctp-green: #40a02b;
-	--ctp-teal: #179299;
-	--ctp-sapphire: #209fb5;
-	--ctp-blue: #1e66f5;
-	--ctp-lavender: #7287fd;
-	--ctp-text: #4c4f69;
-	--ctp-subtext0: #6c6f85;
-	--ctp-overlay2: #7c7f93;
-	--ctp-overlay1: #8c8fa1;
-	--ctp-overlay0: #9ca0b0;
-	--ctp-surface2: #acb0be;
-	--ctp-surface1: #bcc0cc;
-	--ctp-surface0: #ccd0da;
-	--ctp-base: #eff1f5;
-	--ctp-mantle: #e6e9ef;
-	--ctp-crust: #dce0e8;
-	--ctp-on-accent: var(--ctp-base);
-	--ctp-panel: var(--ctp-crust);
-
-	--bg-u6: var(--ctp-surface0);
-	--bg-u5: var(--ctp-surface1);
-	--bg-u4: var(--ctp-base);
-	--bg-u3: var(--ctp-mantle);
-	--bg-u2: var(--ctp-base);
-	--bg-u1: var(--ctp-base);
-	--bg: var(--ctp-mantle);
-	--bg-d1: var(--ctp-base);
-	--bg-d2: var(--ctp-base);
-	--bg-d3: var(--ctp-base);
-	--bg-max: var(--ctp-base);
-	--row-alt: color-mix(in srgb, var(--ctp-base) 50%, var(--ctp-mantle));
-}
-
-html.f {
-	--bgg: var(--bg);
-
-	--fg: var(--ctp-text);
-	--fg-max: var(--ctp-text);
-	--fg2-max: var(--ctp-text);
-	--fg-weak: var(--ctp-subtext0);
-
-	--tab-alt: var(--ctp-pink);
-
-	--scroll: var(--ctp-lavender);
-	--sel-fg: var(--ctp-base);
-	--sel-bg: var(--ctp-lavender);
-
-	--a: var(--ctp-lavender);
-	--a-b: var(--ctp-mauve);
-	--a-hil: var(--ctp-blue);
-	--a-dark: var(--ctp-mauve);
-	--a-gray: var(--ctp-overlay0);
-
-	--btn-fg: var(--a);
-	--btn-bg: var(--ctp-surface0);
-	--btn-h-fg: var(--ctp-text);
-	--btn-h-bg: var(--ctp-surface1);
-	--btn-1-fg: var(--ctp-on-accent);
-	--btn-1-bg: var(--ctp-lavender);
-	--btn-1h-fg: var(--ctp-on-accent);
-	--btn-1h-bg: var(--ctp-blue);
-	--chk-fg: var(--ctp-pink);
-	--txt-sh: transparent;
-	--txt-bg: var(--btn-bg);
-
-	--op-aa-fg: var(--a);
-	--op-aa-bg: var(--ctp-surface0);
-	--op-a-sh: transparent;
-
-	--u2-btn-b1: var(--ctp-overlay1);
-	--u2-sbtn-b1: var(--ctp-yellow);
-	--u2-tab-b1: var(--bg-u5);
-	--u2-tab-1-fg: var(--ctp-text);
-	--u2-tab-1-bg: var(--bg);
-	--u2-tab-1-b1: var(--ctp-green);
-	--u2-tab-1-b2: var(--ctp-teal);
-	--u2-b-fg: var(--ctp-text);
-	--u2-inf-bg: color-mix(in srgb, var(--ctp-blue) 35%, var(--bg));
-	--u2-inf-b1: var(--ctp-blue);
-	--u2-ok-bg: color-mix(in srgb, var(--ctp-green) 35%, var(--bg));
-	--u2-ok-b1: var(--ctp-green);
-	--u2-err-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
-	--u2-err-b1: var(--ctp-red);
-	--ud-b1: var(--ctp-overlay0);
-
-	--sort-1: var(--ctp-peach);
-	--sort-2: var(--ctp-mauve);
-
-	--sz-b: var(--ctp-overlay1);
-	--sz-k: var(--ctp-teal);
-	--sz-m: var(--ctp-pink);
-	--sz-g: var(--ctp-lavender);
-
-	--srv-1: var(--ctp-overlay2);
-	--srv-2: var(--ctp-peach);
-	--srv-3: var(--ctp-pink);
-	--srv-3b: color-mix(in srgb, var(--ctp-pink) 60%, transparent);
-
-	--g-play-bg: color-mix(in srgb, var(--ctp-peach) 30%, var(--bg));
-	--g-play-b1: var(--ctp-peach);
-	--g-play-b2: var(--ctp-yellow);
-	--g-play-sh: var(--ctp-peach);
-
-	--g-sel-fg: var(--ctp-text);
-	--g-sel-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
-	--g-sel-b1: var(--ctp-red);
-	--g-sel-sh: var(--ctp-red);
-	--g-fsel-bg: color-mix(in srgb, var(--ctp-red) 55%, var(--bg));
-	--g-fsel-b1: var(--ctp-maroon);
-	--g-fsel-ts: transparent;
-	--g-fg: var(--a);
-	--g-f-fg: var(--a);
-
-	--f-h-b1: var(--ctp-surface1);
-	--f-play-bg: var(--ctp-lavender);
-	--f-play-fg: var(--ctp-on-accent);
-	--f-sel-sh: var(--ctp-yellow);
-	--f-gray: var(--ctp-overlay1);
-
-	--fm-off: var(--ctp-pink);
-	--mp-sh: var(--bg-d3);
-
-	--err-fg: var(--ctp-text);
-	--err-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
-	--err-b1: var(--ctp-red);
-	--err-ts: transparent;
-
-	/* flat layout, from html.b */
-	--btn-bs: 0 .05em 0 var(--bg-d3) inset;
-	--btn-1-bs: 0 .05em 0 var(--btn-1h-bg) inset;
-
-	--tree-bg: var(--ctp-panel);
-
-	--g-bg: var(--bg);
-	--g-b1: var(--bg);
-	--g-b2: var(--bg);
-	--g-g1: var(--bg);
-	--g-sh: rgba(0,0,0,0);
-
-	--u2-txt-bg: transparent;
-	--u2-tab-1-sh: var(--bg);
-	--u2-b1-bg: rgba(128,128,128,0.15);
-	--u2-b2-bg: var(--u2-b1-bg);
-
-	--f-sh1: 0.1;
-	--mp-b-bg: transparent;
-}
-
-html.f #u2conf a.b:hover {
-	background: var(--btn-h-bg);
-}
-html.f #pctl {
-	left: .5em;
-}
-html.f #path {
-	margin: .3em 0;
-	line-height: 1.7em;
-}
-html.f.op_open #path {
-	margin-top: .2em;
-}
-html.f #srv_info {
-	display: none;
-}
-html.f #srv_info2 {
-	display: inline-block;
-}
-html.f #srv_info2:after {
-	content: '//';
-	margin: 0 .4em;
-}
-html.f #acc_info {
-	right: .5em;
-}
-html.f #wtoggle {
-	border-radius: .1em 0 0 0;
-}
-html.f #barpos,
-html.f #barbuf,
-html.f #pvol {
-	border-radius: .2em;
-}
-html.f #barpos {
-	box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
-}
-html.fy #barpos {
-	box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset;
-}
-html.f #ops {
-	max-width: 1em;
-	margin-bottom: 1.7em;
-	position: relative;
-	z-index: 2;
-}
-html.f #ops a {
-	background: var(--ctp-panel);
-}
-html.f #ops a.act {
-	background: var(--op-aa-bg);
-}
-html.f .opview {
-	margin: 1em 0;
-	background: var(--ctp-panel);
-}
-html.f .opview:not(.opbox) {
-	padding: .5em 1em;
-	border-radius: .3em;
-}
-html.f #srch_q {
-	margin: .2em 0 0 1.6em;
-}
-html.f #srch_q:empty {
-	margin-bottom: -1em;
-}
-html.f #op_up2k {
-	margin-top: 3em;
-}
-html.f #tree {
-	background: var(--tree-bg);
-	box-shadow: 0 -1px 0 var(--bg-d3);
-}
-html.f #treeh,
-html.f #tree li {
-	border: none;
-}
-html.f #tree li {
-	margin-left: .8em;
-}
-html.f #docul a,
-html.f .ntree a {
-	padding: .6em .2em;
-}
-html.f #treepar {
-	margin-left: .63em;
-	width: calc(.1em + var(--nav-sz) - var(--sbw));
-	border-bottom: .2em solid var(--f-h-b1);
-}
-html.f #wrap {
-	margin-top: 2em;
-}
-html.f .ghead {
-	background: var(--bg);
-	padding: .2em 0;
-}
-html.f #files td {
-	padding: .5em .7em;
-}
-html.f .btn {
-	top: -.1em;
-}
-html.f #op_up2k.srch sup {
-	color: var(--ctp-yellow);
-}
-html.fy #u2btn sup {
-	color: var(--ctp-blue);
-}
-html.fz #u2cards a.act {
-	box-shadow: 0 -.1em .2em var(--bg-d2);
-}
-html.fy #u2cards a.act {
-	border-width: 2px;
-}
-html.f #u2conf {
-	margin: 2em auto 0 auto;
-}
-html.f #u2conf .txtbox {
-	border: none;
-}
-html.f #u2conf a.b {
-	border-radius: .2em;
-}
-@media (min-width: 70em) {
-	html.f #barpos,
-	html.f #barbuf {
-		width: calc(100% - 19em);
-		left: 8em;
+	/*
+	* catppuccin theme for copyparty, loaded through --html-head
+	*   theme 10 = html.fz (mocha), theme 11 = html.fy (latte)
+	* the html.f layout rules are copied from the built-in flat theme (html.b)
+	*/
+	
+	html.fz {
+		--ctp-rosewater: #f5e0dc;
+		--ctp-pink: #f5c2e7;
+		--ctp-mauve: #cba6f7;
+		--ctp-red: #f38ba8;
+		--ctp-maroon: #eba0ac;
+		--ctp-peach: #fab387;
+		--ctp-yellow: #f9e2af;
+		--ctp-green: #a6e3a1;
+		--ctp-teal: #94e2d5;
+		--ctp-sapphire: #74c7ec;
+		--ctp-blue: #89b4fa;
+		--ctp-lavender: #b4befe;
+		--ctp-text: #cdd6f4;
+		--ctp-subtext0: #a6adc8;
+		--ctp-overlay2: #9399b2;
+		--ctp-overlay1: #7f849c;
+		--ctp-overlay0: #6c7086;
+		--ctp-surface2: #585b70;
+		--ctp-surface1: #45475a;
+		--ctp-surface0: #313244;
+		--ctp-base: #1e1e2e;
+		--ctp-mantle: #181825;
+		--ctp-crust: #11111b;
+		--ctp-on-accent: var(--ctp-crust);
+		--ctp-panel: var(--ctp-mantle);
+		
+		--bg-u6: var(--ctp-surface2);
+		--bg-u5: var(--ctp-surface1);
+		--bg-u4: var(--ctp-surface0);
+		--bg-u3: var(--ctp-surface0);
+		--bg-u2: color-mix(in srgb, var(--ctp-surface0) 50%, var(--ctp-base));
+		--bg-u1: color-mix(in srgb, var(--ctp-surface0) 50%, var(--ctp-base));
+		--bg: var(--ctp-base);
+		--bg-d1: var(--ctp-mantle);
+		--bg-d2: var(--ctp-mantle);
+		--bg-d3: var(--ctp-crust);
+		--bg-max: var(--ctp-crust);
+		--row-alt: var(--ctp-mantle);
 	}
-	html.f #ops {
-		padding-left: 1.7em;
+	
+	html.fy {
+		--ctp-rosewater: #dc8a78;
+		--ctp-pink: #ea76cb;
+		--ctp-mauve: #8839ef;
+		--ctp-red: #d20f39;
+		--ctp-maroon: #e64553;
+		--ctp-peach: #fe640b;
+		--ctp-yellow: #df8e1d;
+		--ctp-green: #40a02b;
+		--ctp-teal: #179299;
+		--ctp-sapphire: #209fb5;
+		--ctp-blue: #1e66f5;
+		--ctp-lavender: #7287fd;
+		--ctp-text: #4c4f69;
+		--ctp-subtext0: #6c6f85;
+		--ctp-overlay2: #7c7f93;
+		--ctp-overlay1: #8c8fa1;
+		--ctp-overlay0: #9ca0b0;
+		--ctp-surface2: #acb0be;
+		--ctp-surface1: #bcc0cc;
+		--ctp-surface0: #ccd0da;
+		--ctp-base: #eff1f5;
+		--ctp-mantle: #e6e9ef;
+		--ctp-crust: #dce0e8;
+		--ctp-on-accent: var(--ctp-base);
+		--ctp-panel: var(--ctp-crust);
+		
+		--bg-u6: var(--ctp-surface0);
+		--bg-u5: var(--ctp-surface1);
+		--bg-u4: var(--ctp-base);
+		--bg-u3: var(--ctp-mantle);
+		--bg-u2: var(--ctp-base);
+		--bg-u1: var(--ctp-base);
+		--bg: var(--ctp-mantle);
+		--bg-d1: var(--ctp-base);
+		--bg-d2: var(--ctp-base);
+		--bg-d3: var(--ctp-base);
+		--bg-max: var(--ctp-base);
+		--row-alt: color-mix(in srgb, var(--ctp-base) 50%, var(--ctp-mantle));
 	}
-	html.f .opview {
-		margin: 1em;
+	
+	html.f {
+		--bgg: var(--bg);
+		
+		--fg: var(--ctp-text);
+		--fg-max: var(--ctp-text);
+		--fg2-max: var(--ctp-text);
+		--fg-weak: var(--ctp-subtext0);
+		
+		--tab-alt: var(--ctp-pink);
+		
+		--scroll: var(--ctp-lavender);
+		--sel-fg: var(--ctp-base);
+		--sel-bg: var(--ctp-lavender);
+		
+		--a: var(--ctp-lavender);
+		--a-b: var(--ctp-mauve);
+		--a-hil: var(--ctp-blue);
+		--a-dark: var(--ctp-mauve);
+		--a-gray: var(--ctp-overlay0);
+		
+		--btn-fg: var(--a);
+		--btn-bg: var(--ctp-surface0);
+		--btn-h-fg: var(--ctp-text);
+		--btn-h-bg: var(--ctp-surface1);
+		--btn-1-fg: var(--ctp-on-accent);
+		--btn-1-bg: var(--ctp-lavender);
+		--btn-1h-fg: var(--ctp-on-accent);
+		--btn-1h-bg: var(--ctp-blue);
+		--chk-fg: var(--ctp-pink);
+		--txt-sh: transparent;
+		--txt-bg: var(--btn-bg);
+		
+		--op-aa-fg: var(--a);
+		--op-aa-bg: var(--ctp-surface0);
+		--op-a-sh: transparent;
+		
+		--u2-btn-b1: var(--ctp-overlay1);
+		--u2-sbtn-b1: var(--ctp-yellow);
+		--u2-tab-b1: var(--bg-u5);
+		--u2-tab-1-fg: var(--ctp-text);
+		--u2-tab-1-bg: var(--bg);
+		--u2-tab-1-b1: var(--ctp-green);
+		--u2-tab-1-b2: var(--ctp-teal);
+		--u2-b-fg: var(--ctp-text);
+		--u2-inf-bg: color-mix(in srgb, var(--ctp-blue) 35%, var(--bg));
+		--u2-inf-b1: var(--ctp-blue);
+		--u2-ok-bg: color-mix(in srgb, var(--ctp-green) 35%, var(--bg));
+		--u2-ok-b1: var(--ctp-green);
+		--u2-err-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
+		--u2-err-b1: var(--ctp-red);
+		--ud-b1: var(--ctp-overlay0);
+		
+		--sort-1: var(--ctp-peach);
+		--sort-2: var(--ctp-mauve);
+		
+		--sz-b: var(--ctp-overlay1);
+		--sz-k: var(--ctp-teal);
+		--sz-m: var(--ctp-pink);
+		--sz-g: var(--ctp-lavender);
+		
+		--srv-1: var(--ctp-overlay2);
+		--srv-2: var(--ctp-peach);
+		--srv-3: var(--ctp-pink);
+		--srv-3b: color-mix(in srgb, var(--ctp-pink) 60%, transparent);
+		
+		--g-play-bg: color-mix(in srgb, var(--ctp-peach) 30%, var(--bg));
+		--g-play-b1: var(--ctp-peach);
+		--g-play-b2: var(--ctp-yellow);
+		--g-play-sh: var(--ctp-peach);
+		
+		--g-sel-fg: var(--ctp-text);
+		--g-sel-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
+		--g-sel-b1: var(--ctp-red);
+		--g-sel-sh: var(--ctp-red);
+		--g-fsel-bg: color-mix(in srgb, var(--ctp-red) 55%, var(--bg));
+		--g-fsel-b1: var(--ctp-maroon);
+		--g-fsel-ts: transparent;
+		--g-fg: var(--a);
+		--g-f-fg: var(--a);
+		
+		--f-h-b1: var(--ctp-surface1);
+		--f-play-bg: var(--ctp-lavender);
+		--f-play-fg: var(--ctp-on-accent);
+		--f-sel-sh: var(--ctp-yellow);
+		--f-gray: var(--ctp-overlay1);
+		
+		--fm-off: var(--ctp-pink);
+		--mp-sh: var(--bg-d3);
+		
+		--err-fg: var(--ctp-text);
+		--err-bg: color-mix(in srgb, var(--ctp-red) 35%, var(--bg));
+		--err-b1: var(--ctp-red);
+		--err-ts: transparent;
+		
+		/* flat layout, from html.b */
+		--btn-bs: 0 .05em 0 var(--bg-d3) inset;
+		--btn-1-bs: 0 .05em 0 var(--btn-1h-bg) inset;
+		
+		--tree-bg: var(--ctp-panel);
+		
+		--g-bg: var(--bg);
+		--g-b1: var(--bg);
+		--g-b2: var(--bg);
+		--g-g1: var(--bg);
+		--g-sh: rgba(0,0,0,0);
+		
+		--u2-txt-bg: transparent;
+		--u2-tab-1-sh: var(--bg);
+		--u2-b1-bg: rgba(128,128,128,0.15);
+		--u2-b2-bg: var(--u2-b1-bg);
+		
+		--f-sh1: 0.1;
+		--mp-b-bg: transparent;
+	}
+	
+	html.f #u2conf a.b:hover {
+		background: var(--btn-h-bg);
+	}
+	html.f #pctl {
+		left: .5em;
 	}
 	html.f #path {
-		padding-left: 1.3em;
+		margin: .3em 0;
+		line-height: 1.7em;
 	}
-}
-@media (max-width: 54em) {
+	html.f.op_open #path {
+		margin-top: .2em;
+	}
+	html.f #srv_info {
+		display: none;
+	}
+	html.f #srv_info2 {
+		display: inline-block;
+	}
+	html.f #srv_info2:after {
+		content: '//';
+		margin: 0 .4em;
+	}
+	html.f #acc_info {
+		z-index: 3;
+		right: .5em;
+	}
+	html.f #wtoggle {
+		border-radius: .1em 0 0 0;
+	}
+	html.f #barpos,
+	html.f #barbuf,
+	html.f #pvol {
+		border-radius: .2em;
+	}
+	html.f #barpos {
+		box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+	}
+	html.fy #barpos {
+		box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset;
+	}
 	html.f #ops {
-		margin-top: 1.7em;
+		background: var(--ctp-panel);
+		padding-bottom: 0.8em;
+		position: relative;
+		z-index: 2;
 	}
-}
-@supports (display: grid) and (gap: 1em) {
-	html.f #ggrid {
-		padding: 0 0 2em 0;
-		gap: 1em 1.5em;
+	html.f #ops a.act {
+		background: var(--op-aa-bg);
 	}
-}
+	html.f .opview {
+		margin: 1em 0;
+		background: var(--ctp-panel);
+	}
+	html.f .opview:not(.opbox) {
+		padding: .5em 1em;
+		border-radius: .3em;
+	}
+	html.f #srch_q {
+		margin: .2em 0 0 1.6em;
+	}
+	html.f #srch_q:empty {
+		margin-bottom: -1em;
+	}
+	html.f #op_up2k {
+		margin-top: 3em;
+	}
+	html.f #tree {
+		background: var(--tree-bg);
+		box-shadow: 0 -1px 0 var(--bg-d3);
+	}
+	html.f #treeh {
+		margin-top: 1.5em;
+		border: none;
+	}
+	html.f #tree li {
+		border: none;
+	}
+	html.f #tree li {
+		margin-left: .8em;
+	}
+	html.f #docul a,
+	html.f .ntree a {
+		padding: .6em .2em;
+	}
+	html.f #treepar {
+		margin-left: .63em;
+		width: calc(.1em + var(--nav-sz) - var(--sbw));
+		border-bottom: .2em solid var(--f-h-b1);
+	}
+	html.f #wrap {
+		padding-top: 2em;
+		margin-top: 0;
+	}
+	html.f .ghead {
+		background: var(--bg);
+		padding: .2em 0;
+	}
+	html.f #files td {
+		padding: .5em .7em;
+	}
+	html.f .btn {
+		top: -.1em;
+	}
+	html.f #op_up2k.srch sup {
+		color: var(--ctp-yellow);
+	}
+	html.fy #u2btn sup {
+		color: var(--ctp-blue);
+	}
+	html.fz #u2cards a.act {
+		box-shadow: 0 -.1em .2em var(--bg-d2);
+	}
+	html.fy #u2cards a.act {
+		border-width: 2px;
+	}
+	html.f #u2conf {
+		margin: 2em auto 0 auto;
+	}
+	html.f #u2conf .txtbox {
+		border: none;
+	}
+	html.f #u2conf a.b {
+		border-radius: .2em;
+	}
+	@media (min-width: 70em) {
+		html.f #barpos,
+		html.f #barbuf {
+			width: calc(100% - 19em);
+			left: 8em;
+		}
+		html.f #ops {
+			padding-left: 1.7em;
+		}
+		html.f .opview {
+			margin: 1em;
+		}
+		html.f #path {
+			padding-left: 1.3em;
+		}
+	}
+	@media (max-width: 54em) {
+		html.f #ops {
+			margin-top: 1.7em;
+		}
+	}
+	@supports (display: grid) and (gap: 1em) {
+		html.f #ggrid {
+			padding: 0 0 2em 0;
+			gap: 1em 1.5em;
+		}
+	}
 </style>
