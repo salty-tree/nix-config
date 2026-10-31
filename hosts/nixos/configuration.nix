@@ -39,15 +39,17 @@
     configurationLimit = 20;
   };
   boot.loader.efi.canTouchEfiVariables = true;
-  # OBS virtual cam
-  # boot.extraModulePackages = with config.boot.kernelPackages; [
-  #   v4l2loopback
-  # ];
-  # boot.kernelModules = [ "v4l2loopback" ];
-  # boot.extraModprobeConfig = ''
-  #   options v4l2loopback devices=1 video_nr=1 card_label="OBS VCam" exclusive_caps=1
-  # '';
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   security.polkit.enable = true;
+
+  # OBS virtual cam
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS VCam" exclusive_caps=1
+  '';
 
   networking.hostName = "fwd-nixos";
   # networking.interfaces.enp6s0.useDHCP = true;
